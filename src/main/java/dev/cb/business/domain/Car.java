@@ -31,35 +31,35 @@ public class Car {
         this.id = id;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public void setProductionDate(int productionDate) {
-        this.productionDate = productionDate;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
     public String getBrand() {
         return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     public String getModel() {
         return model;
     }
 
+    public void setModel(String model) {
+        this.model = model;
+    }
+
     public int getProductionDate() {
         return productionDate;
     }
 
+    public void setProductionDate(int productionDate) {
+        this.productionDate = productionDate;
+    }
+
     public String getColor() {
         return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 }

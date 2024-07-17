@@ -34,7 +34,7 @@ public class CarService {
         return cars.stream().filter(car -> car.getId() == id).findFirst().orElse(null);
     }
 
-    public Car update(long id,Car updatedCar) {
+    public Car update(long id, Car updatedCar) {
         Car car = getById(id);
         car.setBrand(updatedCar.getBrand());
         car.setModel(updatedCar.getModel());
