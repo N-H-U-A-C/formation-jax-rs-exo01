@@ -1,12 +1,9 @@
 package dev.cb.controller;
 
-import dev.cb.business.model.Car;
+import dev.cb.business.domain.Car;
 import dev.cb.business.service.CarService;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 
 import java.util.List;
@@ -22,21 +19,33 @@ public class CarResource {
         this.carService = carService;
     }
 
-    @GET
+    @POST // http://localhost:8080/formation_jax_rs_exo01_war_exploded/cars
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Car createCar(Car car) {
+        return carService.create(car);
+    }
+
+    @GET // http://localhost:8080/formation_jax_rs_exo01_war_exploded/cars
     public List<Car> getAll() {
         return carService.getAll();
     }
 
-    @GET
+    @GET // http://localhost:8080/formation_jax_rs_exo01_war_exploded/cars/1
     @Path("{id}")
-    public Car getById(@PathParam("id") int id) {
+    public Car getById(@PathParam("id") long id) {
         return carService.getById(id);
     }
 
-    @GET
-    @Path("/test")
-    @Produces("text/plain")
-    public String test() {
-        return "OK";
+    @PUT // http://localhost:8080/formation_jax_rs_exo01_war_exploded/cars/1
+    @Path("{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Car update(@PathParam("id") long id, Car car) {
+        return carService.update(id, car);
+    }
+
+    @DELETE // http://localhost:8080/formation_jax_rs_exo01_war_exploded/cars/1
+    @Path("{id}")
+    public boolean delete(@PathParam("id") long id) {
+        return carService.delete(id);
     }
 }
